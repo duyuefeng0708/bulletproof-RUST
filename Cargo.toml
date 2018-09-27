@@ -24,6 +24,8 @@ tiny-keccak = "1.4.1"
 failure = "0.1"
 merlin = "0.3"
 bincode = "1"
+jni = "0.10.1"
+libc = "0.2.42"
 
 [dev-dependencies]
 hex = "^0.3"
@@ -37,3 +39,5 @@ avx2_backend = ["curve25519-dalek/avx2_backend"]
 name = "bulletproofs"
 harness = false
 
+[lib]
+crate-type = ["dylib"]

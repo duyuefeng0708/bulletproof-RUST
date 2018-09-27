@@ -1,0 +1,54 @@
+NDK=$HOME/NDK
+export PATH=$PATH:$NDK/arm/bin
+export PATH=$PATH:$NDK/arm64/bin
+export PATH=$PATH:$NDK/x86/bin
+
+target_host=aarch64-linux-android
+export AR=$target_host-ar
+export AS=$target_host-clang
+export CC=$target_host-clang
+export CXX=$target_host-clang++
+export LD=$target_host-ld
+export STRIP=$target_host-strip
+cargo build --target aarch64-linux-android --release
+
+target_host=arm-linux-androideabi
+export AR=$target_host-ar
+export AS=$target_host-clang
+export CC=$target_host-clang
+export CXX=$target_host-clang++
+export LD=$target_host-ld
+export STRIP=$target_host-strip
+cargo build --target armv7-linux-androideabi --release
+
+target_host=i686-linux-android
+export AR=$target_host-ar
+export AS=$target_host-clang
+export CC=$target_host-clang
+export CXX=$target_host-clang++
+export LD=$target_host-ld
+export STRIP=$target_host-strip
+cargo build --target i686-linux-android --release
+
+unset AR
+unset AS
+unset CC
+unset CXX
+unset LD
+unset STRIP
+
+cargo test unitestgenerateproof --release -- --nocapture
+cargo test unitestsizegeneration --release -- --nocapture
+cargo test unitesttimeaggregators --release -- --nocapture
+
+776 bytes
+2672 bytes
+48 bytes 1 commitment for value
+208 bytes 5 commitment for secret sharing
+408 bytes 10 commitments for secret sharing
+
+partial sum 40 bytes
+One example in hex (little endian in Intel CPU)
+28, 2b, f0, 86, d5, 7c, af, 38, a, 3e, 5f, 6b, 8e, 25, 99, a5, 83, a1, 6c, ba, df, bd, 60, 20, 68, 9a, e5, a6, 18, 3d, 22, 8
+
+ssh -i ~/Documents/AWS.pem ubuntu@13.250.47.228

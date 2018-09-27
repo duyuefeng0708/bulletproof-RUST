@@ -69,7 +69,7 @@ fn singleparty_create_and_verify_helper(n: usize, value: u64) {
 
     // Both prover and verifier have access to the generators and the proof
     let max_bitsize = 64;
-    let max_parties = 8;
+    let max_parties = 1;
     let pc_gens = PedersenGens::default();
     let bp_gens = BulletproofGens::new(max_bitsize, max_parties);
 
